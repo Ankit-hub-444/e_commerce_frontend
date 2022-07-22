@@ -6,6 +6,7 @@ import { Navbar, Products, Cart, Checkout } from './components';
 import { commerce } from './lib/commerce';
 import Detail from './components/Details/Details.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
+let i=0;
 const App = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   // const [products, setProducts] = useLocalStorage('products',useState([]);
@@ -27,7 +28,83 @@ const App = () => {
 
     
   };
+  
+  // const addProduct = async(event) =>{
 
+  //   i=i+1
+
+  //   console.log(event.title);
+
+  //   if(products.length>0){
+
+  //     let x = {
+
+  //       title:event,
+
+  //       // price:event,
+
+  //       tid:i,
+
+  //       // checked:"false"
+
+  //     }
+
+  //     await fetch("http://localhost:3000/product",{
+
+  //       method:'POST',
+
+  //       headers:{
+
+  //         'Accept':'application/json',
+
+  //         'Content-Type':'application/json'
+
+  //       },
+
+  //       body:JSON.stringify(x)
+
+  //     });
+
+  //     fetchProducts();
+  //     setProducts("");
+
+  //   }
+
+  // }
+
+  // const addProduct = async(event) =>{
+  //   // event.preventDefault()
+
+  //   i=i+1
+
+  //   console.log(event.title);
+
+  //   if(products.length>0){
+
+  //     let x = {
+
+  //       title:event.title,
+
+  //       // price:event.price,
+
+  //       tid:i,
+
+  //       // checked:"false"
+
+  //     }
+
+  //     console.log("value of x: ", x);
+
+  //     await fetch("http://localhost:3000/product", { method: "POST", body: JSON.stringify(x), headers: { "Content-type": "application/json; charset=UTF-8" } }) .then(response => response.json()) .then(json => console.log(json));
+
+
+  //     fetchProducts();
+  //     setProducts("");
+
+  //   }
+
+  // }
+  
 
   useEffect(() => {
     fetchProducts();
