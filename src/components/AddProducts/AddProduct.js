@@ -51,30 +51,30 @@ export default function AddProduct({ products, setProducts }) {
   // console.log(title);
   // console.log(price);
 
-  const addProduct=async()=>{
-    await fetch("http://127.0.0.1:3009/product", {
+//   const addProduct=async()=>{
+//     await ch("http://127.0.0.1:3009/product", {
 
-      method: "POST",
+//       method: "POST",
     
-      body: JSON.stringify({
-      title:title,
-    price:price,
-     category:category,
-     quantity:quantity,
-    description:description,
-    image:image,
+//       body: JSON.stringify({
+//       title:title,
+//     price:price,
+//      category:category,
+//      quantity:quantity,
+//     description:description,
+//     image:image,
 
-      }),
+//       }),
 
-      headers: {
+//       headers: {
 
-        "Content-type": "application/json; charset=UTF-8"
+//         "Content-type": "application/json; charset=UTF-8"
 
-    }
-})
-    .then((addProduct) => addProduct.json())
-      .then((json) => console.log(json))
-  }
+//     }
+// })
+//     .then((addProduct) => addProduct.json())
+//       .then((json) => console.log(json))
+//   }
 
   const addProduct1 = async() =>{
 

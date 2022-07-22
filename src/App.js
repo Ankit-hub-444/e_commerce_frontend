@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import AddProduct from './components/AddProducts/AddProduct';
 import { Navbar, Products, Cart, Checkout } from './components';
 import { commerce } from './lib/commerce';
-import Detail from './components/Details/Details.js'
+import Detail from './components/Details/Details.js';
+import DeleteProduct from './components/DeleteProducts/DeleteProduct'
 import 'bootstrap/dist/css/bootstrap.min.css';
 let i=0;
 const App = () => {
@@ -125,13 +126,17 @@ const App = () => {
             <Products products={products}  />
           </Route>
 
-          <Route exact path="/details/:productId">
+          <Route exact path="/details/:id">
              <Detail />
           </Route>
           
           <Route exact path="/AddProduct">
         <AddProduct  products={products} setProducts={setProducts} />
           </Route>
+
+          {/* <Route exact path="/delete/:deleteid">
+        <DeleteProduct products={products} setProducts={setProducts} />
+          </Route> */}
         
           
         </Switch>
