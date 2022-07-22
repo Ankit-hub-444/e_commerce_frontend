@@ -10,10 +10,10 @@ import noImage from "./no-image-available.png";
 import "./Detail.css";
 
 const Detail = () => {
-  let { productId } = useParams();
+  let { id} = useParams();
   //console.log(imdbID);
   //const { showDetail, selectedMovie } = useContext(MovieContext);
-  const [selectedProduct,setSelectedProduct]=useState([]);
+  const [selectedProduct,setSelectedProduct]=useState({});
 //   const showDetail = async (id) => {
 //     const response = await axios.get(
 //       `https://www.omdbapi.com/?apikey=d1a3f566&i=${imdbID}`
@@ -28,29 +28,42 @@ const Detail = () => {
 
 //Commerce.products.retrieve(productId).then(product => console.log(product));
 
-  const fetchProducts = async () => {
-    //.then(product => const{ data }=product);
-    const { data } = commerce.products.retrieve(productId);
-    console.log(data);
-    setSelectedProduct(data);
-  };
-  useEffect(() => {
-    fetchProducts(productId); // useParams ile alınan film id'sini kullanınız.
-  }, []);
+const fetchProduct = async () => {
+  // const { data } = await commerce.products.list();
+
+// data =  await fetch('url')
+// fetch('http://example.com/movies.json', {method : "POST", body : data})
+fetch('http://127.0.0.1:3000/product/'+4)
+.then(response => response.json())
+.then(data =>{ console.log(data); setSelectedProduct(data);});
+
+  
+};
+
+
+useEffect(() => {
+  fetchProduct();
+  // fetchCart();
+}, []);
 
   return (
-    <div className="detail-container">
+    <div>
+    
+    {/* {console.log(selectedProduct)} className="detail-container"*/}
+
+    <div >
       {/* <div className="poster">
         {selectedProduct.media.source === "N/A" ? (
           <img src={noImage} alt={selectedProduct.name} />
         ) : ( */}
-          <img src={selectedProduct.media.source} alt={selectedProduct.name} />
+          {/* <img src={selectedProduct.image} alt={selectedProduct.title} /> */}
         {/* )}
       </div> */}
+      console.log(selectedProduct);
       <div className="info">
         <div className="field">
           <div className="label">
-            <p className="title label-p">{selectedProduct.name}</p>
+            <p className="title label-p">{selectedProduct.title}</p>
           </div>
         </div>
         <div className="field">
@@ -65,6 +78,7 @@ const Detail = () => {
         </div>
         
       </div>
+    </div>
     </div>
   );
 };

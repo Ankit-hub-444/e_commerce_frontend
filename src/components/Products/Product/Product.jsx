@@ -11,7 +11,12 @@ const Product = ({ product, onAddToCart }) => {
 
   return (
     <Card className={classes.root}>
-       {/* <CardMedia className={classes.media} image={product.media.source} title={product.name} /> */}
+       <CardMedia className={classes.media} image={product.image} height="140" title={product.name} />
+       {/* image={require('assets/img/bg2.jpg')} */}
+       {/* component="img"
+    image="https://picsum.photos/400/300"
+    alt="CardMedia Image Example"
+    height="140" */}
       <CardContent> 
         <div className={classes.cardContent}>
           <Typography gutterBottom variant="h5" component="h2">

@@ -48,7 +48,7 @@ const PrimarySearchAppBar = ({ totalItems }) => {
           sx={{flexgrow: 1}}>
              Home
           </Typography> 
-          <Typography component={Link} to="/" variant="h6" className={classes.title} color="inherit">
+          <Typography component={Link} to="/AddProduct" variant="h6" className={classes.title} color="inherit">
              Add Product
           </Typography> 
           <Typography component={Link} to="/" variant="h6" className={classes.title} color="inherit">
