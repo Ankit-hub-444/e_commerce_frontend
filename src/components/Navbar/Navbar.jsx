@@ -3,11 +3,10 @@ import { AppBar, Toolbar, IconButton, Badge, MenuItem, Menu, Typography ,Button,
 import { ShoppingCart } from '@material-ui/icons';
 import { Link, useLocation } from 'react-router-dom';
 import { useCallback } from 'react';
-import logo from '../../assets/commerce.png';
 import useStyles from './styles';
 import { useHistory } from "react-router-dom";
 
-const PrimarySearchAppBar = ({ totalItems }) => {
+const Navbar = ({ totalItems }) => {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
   const classes = useStyles();
   const location = useLocation();
@@ -44,10 +43,7 @@ const PrimarySearchAppBar = ({ totalItems }) => {
            
             justifyContent: "space-between"
           }}>
-           <Typography component={Link} to="/" variant="h6" className={classes.title} color="inherit">
-            <img src={logo} alt="commerce.js" height="25px" className={classes.image} /> Shoplist
-          </Typography> 
-
+    
           <Typography component={Link} to="/" variant="h6" className={classes.title} color="inherit"
           sx={{flexgrow: 1}}>
              Home
@@ -86,4 +82,4 @@ const PrimarySearchAppBar = ({ totalItems }) => {
   );
 };
 
-export default PrimarySearchAppBar;
+export default Navbar;

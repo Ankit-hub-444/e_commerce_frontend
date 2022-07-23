@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from 'axios';
-//C:\Users\DELL\Downloads\E_commerce-master\src\lib\commerce.js
-import { commerce } from '../../lib/commerce';
+//C:\Users\DELL\Downloads\E_commerce-master\src\lib\commerce.
 
 // import { MovieContext } from "../context/MovieContext";
 
