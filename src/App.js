@@ -140,8 +140,7 @@ const App = () => {
         <DeleteProduct products={products} setProducts={setProducts} />
           </Route> */}
           <Route exact path="/edit/:id">
-
-            <EditProduct editproducts={editproducts} editsetProducts={editsetProducts} />
+        <EditProduct editproducts={editproducts} editsetProducts={editsetProducts} />
 
           </Route>
 
