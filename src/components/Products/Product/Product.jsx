@@ -10,8 +10,8 @@ const Product = ({ product, onAddToCart }) => {
 
   // const handleAddToCart = () => onAddToCart(product.id, 1);
   const history = useHistory();
-  // const handleOnClick1 = useCallback(() => history.push(`/delete/${product.id}`), [history]);
-  //const handleOnClick = useCallback(() => history.push(`/edit/${product.id}`), [history]);
+  const handleOnClick = useCallback(() => history.push(`/edit/${product.id}`), [history]);
+  
   const deleteItem = async(id) => {
 
     console.log("id: ", id);
@@ -52,8 +52,8 @@ const Product = ({ product, onAddToCart }) => {
           </Typography>
           <button type="button" onClick={()=>{deleteItem(product.id)}}>Delete
           </button>
-          {/* <button type="button" onClick={handleOnClick}>Edit
-          </button> */}
+          <button type="button" onClick={handleOnClick}>Edit
+          </button>
         </div>
         <Typography dangerouslySetInnerHTML={{ __html: product.description }} variant="body2" color="textSecondary" component="p" />
       </CardContent>

@@ -2,16 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { CssBaseline } from '@material-ui/core';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import AddProduct from './components/AddProducts/AddProduct';
+import EditProduct from './components/EditProduct/EditProduct';
 import { Navbar, Products, Cart, Checkout } from './components';
 import { commerce } from './lib/commerce';
 import Detail from './components/Details/Details.js';
 import DeleteProduct from './components/DeleteProducts/DeleteProduct'
 import 'bootstrap/dist/css/bootstrap.min.css';
-let i=0;
+let i = 0;
 const App = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   // const [products, setProducts] = useLocalStorage('products',useState([]);
   const [products, setProducts] = useState([]);
+  const [editproducts, editsetProducts] = useState([]);
 
   // const 
   // const [cart, setCart] = useState({});
@@ -21,15 +23,15 @@ const App = () => {
   const fetchProducts = async () => {
     // const { data } = await commerce.products.list();
 
-  // data =  await fetch('url')
-  // fetch('http://example.com/movies.json', {method : "POST", body : data})
-  fetch('http://127.0.0.1:3000/product')
-  .then(response => response.json())
-  .then(data =>{ console.log(data); setProducts(data);});
+    // data =  await fetch('url')
+    // fetch('http://example.com/movies.json', {method : "POST", body : data})
+    fetch('http://127.0.0.1:3000/product')
+      .then(response => response.json())
+      .then(data => { console.log(data); setProducts(data); });
 
-    
+
   };
-  
+
   // const addProduct = async(event) =>{
 
   //   i=i+1
@@ -105,7 +107,7 @@ const App = () => {
   //   }
 
   // }
-  
+
 
   useEffect(() => {
     fetchProducts();
@@ -119,26 +121,30 @@ const App = () => {
       <div style={{ display: 'flex' }}>
         <CssBaseline />
         {/* totalItems={cart.total_items} */}
-        <Navbar  handleDrawerToggle={handleDrawerToggle} />
+        <Navbar handleDrawerToggle={handleDrawerToggle} />
         <Switch>
           <Route exact path="/">
-          {/* onAddToCart={handleAddToCart} handleUpdateCartQty */}
-            <Products products={products}  />
+            {/* onAddToCart={handleAddToCart} handleUpdateCartQty */}
+            <Products products={products} />
           </Route>
 
           <Route exact path="/details/:id">
-             <Detail />
+            <Detail />
           </Route>
-          
+
           <Route exact path="/AddProduct">
-        <AddProduct  products={products} setProducts={setProducts} />
+            <AddProduct products={products} setProducts={setProducts} />
           </Route>
 
           {/* <Route exact path="/delete/:deleteid">
         <DeleteProduct products={products} setProducts={setProducts} />
           </Route> */}
-        
-          
+          <Route exact path="/edit/:id">
+
+            <EditProduct editproducts={editproducts} editsetProducts={editsetProducts} />
+
+          </Route>
+
         </Switch>
       </div>
     </Router>
