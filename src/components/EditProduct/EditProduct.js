@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import "./add-product-style.css";
 
-export default function AddProduct({ products, setProducts }) {
+export default function EditProduct({ editproducts, editsetProducts }) {
   // const [values,setValues]=useState({
   //   title:"",
   //   price:"",
@@ -50,11 +51,13 @@ export default function AddProduct({ products, setProducts }) {
   }
   // console.log(title);
   // console.log(price);
+  let {id}=useParams();
+//   console.log(id)
 
-//   const addProduct=async()=>{
-//     await fetch("http://127.0.0.1:3009/product", {
+//   const EditProduct=async()=>{
+//     await fetch(`http://127.0.0.1:3009/product/{$id}`, {
 
-//       method: "POST",
+//       method: "PUT",
     
 //       body: JSON.stringify({
 //       title:title,
@@ -72,18 +75,17 @@ export default function AddProduct({ products, setProducts }) {
 
 //     }
 // })
-//     .then((addProduct) => addProduct.json())
+//     .then((editProduct) => editProduct.json())
 //       .then((json) => console.log(json))
 //   }
 
-  const addProduct1 = async() =>{
-    // console.log("out titile :",{title});
+  const editProduct1 = async() =>{
 
     // i=i+1
 
-    // console.log(event.title);
+    console.log("out titile :",{title});
 
-    if(products.length>0){
+    // if(editproducts.length>0){
 
       let x = {
 
@@ -99,10 +101,12 @@ export default function AddProduct({ products, setProducts }) {
         // checked:"false"
 
       }
+      console.log("our x",x);
 
-      await fetch("http://localhost:3000/product",{
 
-        method:'POST',
+      await fetch(`http://127.0.0.1:3000/product/${id}`,{
+
+        method:'PUT',
 
         headers:{
 
@@ -116,11 +120,12 @@ export default function AddProduct({ products, setProducts }) {
 
       });
 
-      // fetchProducts();
+
+      // fetchProductcs();
 
       // setProducts("");
 
-    }
+    
 
   }
   const handleSubmit=(event)=>{
@@ -128,7 +133,7 @@ export default function AddProduct({ products, setProducts }) {
     setSubmitted(true);
     //setProducts([values, ...products]);
     // console.log(values);
-    addProduct1();
+    editProduct1();
   
   }
   return (
@@ -194,53 +199,9 @@ export default function AddProduct({ products, setProducts }) {
         />  
         {/* Uncomment the next line to show the error message */}
         {/* <span id="email-error">Please enter an email address</span> */}
-        <button class="form-field" type="submit">
-          Add Product
+        <button class="form-field" type="submit">Edit
         </button>
       </form>
     </div>
   );
 }
-//","title":"tv","price":540,"category":" electronics","quantity":"5","description":"good tv","image":null
-// import React from "react";
-// import { useForm } from "react-hook-form";
-
-// export default function AddProduct({ products, setProducts }) {
-//   const { register, handleSubmit, formState: { errors } } = useForm();
-//   const onSubmit = data => {console.log(data);setProducts([data, ...products]);}
-  
-//     //   const handleOnSubmit = (product) => {
-//     //     setProducts([product, ...products]);
-//     //     // history.push('/');
-//     //   };
-
-//   return (
-//     <>
-//     <form onSubmit={handleSubmit(onSubmit)}>
-//       <label htmlFor="name">Name</label>
-//       <input id="name" {...register('name', { required: true, maxLength: 30 })} />
-//       {errors.name && errors.name.type === "required" && <span>This is required</span>}
-//       {errors.name && errors.name.type === "maxLength" && <span>Max length exceeded</span> }
-//       <input type="submit" />
-//     </form>
-//     </>
-//   );
-// }
-
-
-// import React from 'react';
-// import ProductForm from "./ProductForm"
-
-// const AddProduct = ({ products, setProducts }) => {
-//   const handleOnSubmit = (product) => {
-//     setProducts([product, ...products]);
-//     // history.push('/');
-//   };
-
-//   return (
-//  <>
-//        <ProductForm handleOnSubmit={handleOnSubmit} />
-// </> 
-//   );
-// };
-// export default AddProduct;

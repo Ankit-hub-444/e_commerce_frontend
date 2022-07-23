@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { CssBaseline } from '@material-ui/core';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import AddProduct from './components/AddProducts/AddProduct';
+import EditProduct from './components/EditProduct/EditProduct';
 import { Navbar, Products, Cart, Checkout } from './components';
 import { commerce } from './lib/commerce';
 import Detail from './components/Details/Details.js'
@@ -11,11 +12,22 @@ const App = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   // const [products, setProducts] = useLocalStorage('products',useState([]);
   const [products, setProducts] = useState([]);
+  const [editproducts, editsetProducts] = useState([]);
+
 
   // const 
   // const [cart, setCart] = useState({});
   //const [order, setOrder] = useState({});
   const [errorMessage, setErrorMessage] = useState('');
+  // const deleteCart= (pro_id)=>{
+
+  //   axios.delete('http://127.0.0.1:3000/product/'+pro_id)
+
+  //   .then(() => console.log('Delete successful'));
+
+  //   window.location.reload()
+
+  // }
 
   const fetchProducts = async () => {
     // const { data } = await commerce.products.list();
@@ -132,6 +144,12 @@ const App = () => {
           <Route exact path="/AddProduct">
         <AddProduct  products={products} setProducts={setProducts} />
           </Route>
+          <Route exact path="/edit/:id">
+        <EditProduct  editproducts={editproducts} editsetProducts={editsetProducts} />
+          </Route>
+          {/* <Route exact path="/delete">
+        <AddProduct  products={editproducts} setProducts={editsetProducts} />
+          </Route> */}
         
           
         </Switch>
