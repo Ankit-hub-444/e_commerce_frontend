@@ -8,6 +8,8 @@ import { commerce } from './lib/commerce';
 import Detail from './components/Details/Details.js';
 import DeleteProduct from './components/DeleteProducts/DeleteProduct'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Signup from './components/SignUp/Signup.js';
+import Login from './components/Login/Login.js';
 let i = 0;
 const App = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -143,6 +145,14 @@ const App = () => {
         <EditProduct editproducts={editproducts} editsetProducts={editsetProducts} />
 
           </Route>
+
+          <Route exact path="/signup">
+        <Signup />
+        </Route>
+        
+        <Route exact path="/login">
+        <Login />
+        </Route>
 
         </Switch>
       </div>

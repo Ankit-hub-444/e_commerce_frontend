@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { AppBar, Toolbar, IconButton, Badge, MenuItem, Menu, Typography ,Button,TextField} from '@material-ui/core';
 import { ShoppingCart } from '@material-ui/icons';
 import { Link, useLocation } from 'react-router-dom';
-
+import { useCallback } from 'react';
 import logo from '../../assets/commerce.png';
 import useStyles from './styles';
+import { useHistory } from "react-router-dom";
 
 const PrimarySearchAppBar = ({ totalItems }) => {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
@@ -30,6 +31,9 @@ const PrimarySearchAppBar = ({ totalItems }) => {
     </Menu>
   );
 
+  const history = useHistory();
+  const handleOnClick = useCallback(() => history.push(`/signup`), [history]);
+  const handleOnClick1 = useCallback(() => history.push(`/login`), [history]);
   return (
     <>
       <AppBar position="fixed" className={classes.appBar} color="inherit">
@@ -54,16 +58,16 @@ const PrimarySearchAppBar = ({ totalItems }) => {
           <Typography component={Link} to="/" variant="h6" className={classes.title} color="inherit">
          
           </Typography> 
-          <TextField
+          {/* <TextField
                                 name="search"
                                 // floatingLabelText="Cerca"
                                 // value={this.state.query}
                                 // onChange={this.searchChange}
                                 // floatingLabelFixed
-           />
-            <Button variant="contained" margin="40px">Search</Button>
-          <Button variant="contained">Login</Button>
-           <Button variant="outlined">Signup</Button>
+           /> */}
+            {/* <Button variant="contained" margin="40px">Search</Button> */}
+          <Button variant="contained" onClick={handleOnClick1}>Login</Button>
+           <Button variant="outlined" onClick={handleOnClick}>Signup</Button>
           
           {/* <div className={classes.grow} />
           {location.pathname === '/' && (

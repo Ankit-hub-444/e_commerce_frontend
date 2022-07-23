@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./add-product-style.css";
-export default function Signup({ products, setProducts }) {
+export default function Login({ products, setProducts }) {
   // const [values,setValues]=useState({
   //   title:"",
   //   price:"",
@@ -22,8 +22,6 @@ export default function Signup({ products, setProducts }) {
   const handlepasswordInputChange=(event)=>{
     setPassword(event.target.value)
   }
-
-
 //   const handlecategoryInputChange=(event)=>{
 //     setCategory(event.target.value)
 //   }
@@ -56,7 +54,8 @@ export default function Signup({ products, setProducts }) {
 //     .then((addProduct) => addProduct.json())
 //       .then((json) => console.log(json))
 //   }
-  const addsignup = async() =>{
+
+  const addlogin = async() =>{
 
     
       let x = {
@@ -64,7 +63,7 @@ export default function Signup({ products, setProducts }) {
         password:password,
  
       }
-      await fetch("http://127.0.0.1:3000/signup",{
+      await fetch("http://127.0.0.1:3000/login",{
         method:'POST',
         headers:{
           'Accept':'application/json',
@@ -74,14 +73,16 @@ export default function Signup({ products, setProducts }) {
       });
       // fetchProducts();
       // setProducts("");
+      console.log("logged in")
     
   }
   const handleSubmit=(event)=>{
     event.preventDefault();
     setSubmitted(true);
     //setProducts([values, ...products]);
-    // console.log(values);
-    addsignup();
+   
+    addlogin();
+     
   }
   return (
     <div class="form-container">
@@ -147,7 +148,7 @@ export default function Signup({ products, setProducts }) {
         {/* Uncomment the next line to show the error message */}
         {/* <span id="email-error">Please enter an email address</span> */}
         <button class="form-field" type="submit">
-          signup
+          Login
         </button>
       </form>
     </div>
